@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Akram Faisal
 - 👀 I’m interested in Computer Science and specifically Cybersecurity
-- 🌱 I’m currently taking foundation in Computer Science from Universiti Teknologi PETRONAS.
+- 🌱 I’m currently taking Bachelor in Computer Science from Universiti Teknologi PETRONAS.
 - 📫 How to reach me = email(akram.socials@gmail.com)
 
 <!---
