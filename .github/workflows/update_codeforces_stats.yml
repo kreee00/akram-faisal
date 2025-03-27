@@ -1,0 +1,26 @@
+name: Update Codeforces Stats
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"  # Runs every 12 hours
+
+  workflow_dispatch:  # Allows manual execution
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Codeforces Stats
+        run: |
+          curl -s "https://codeforces.com/api/user.info?handles=kreee00" | jq -r '.result[0] | "Rating: " + (if .rating then (.rating|tostring) else "N/A" end) + "\nRank: " + (if .rank then .rank else "N/A" end)' > assets/codeforces_stats.txt
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add assets/codeforces_stats.txt
+          git commit -m "Updated Codeforces stats" || echo "No changes to commit"
+          git push
